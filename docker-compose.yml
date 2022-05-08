@@ -1,0 +1,27 @@
+version: "2.1"
+
+services:
+    app:
+        build: .
+        env_file:
+            - local.env
+        ports:
+            - 8000:8000
+        depends_on:
+            - app_pg
+            - app_redis
+
+    pg:
+        image: postgres:latest
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+    redis:
+        image: "redis:alpine"
+        ports:
+            - 6379:6379

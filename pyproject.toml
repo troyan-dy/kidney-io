@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "kidney_io"
+version = "0.1.0"
+description = ""
+authors = ["Dmitry Troyan <troyan-dy@sber-zvuk.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.76.0"
+aio-pika = "^7.2.0"
+aiopg = "^1.3.3"
