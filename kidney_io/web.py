@@ -6,10 +6,6 @@ from fastapi import FastAPI, Request
 app = FastAPI()
 
 
-
-
-
-
 @app.get("/analis/{analis_id}")
 async def get_event(req: Request, analis_id: str):
     pass
