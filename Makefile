@@ -4,7 +4,7 @@ setup:
 	@poetry install --no-root
 
 start_db:
-	docker-compose up -d pg rabbit
+	docker-compose up -d pg rabbitmq
 
 start_web:
 	@poetry run python -m $(SERVICE_NAME).web

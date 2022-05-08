@@ -8,8 +8,8 @@ services:
         ports:
             - 8000:8000
         depends_on:
-            - app_pg
-            - app_redis
+            - rabbitmq
+            - pg
 
     pg:
         image: postgres:latest
