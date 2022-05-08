@@ -21,7 +21,13 @@ services:
             - POSTGRES_PASSWORD=postgres
         volumes:
             - ./data/db:/var/lib/postgresql/data
-    redis:
-        image: "redis:alpine"
+
+    rabbitmq:
+        image: rabbitmq:3-management
+        environment:
+        - RABBITMQ_PASSWORD=guest
+        - RABBITMQ_USERNAME=guest
+
         ports:
-            - 6379:6379
+        - 5672:5672
+        - 15672:15672
