@@ -12,7 +12,7 @@ async def main(loop):
         routing_key = "pub.method.sub"
         exchange_name = "group"
         channel = await connection.channel()
-        logs_exchange = await channel.declare_exchange(exchange_name, aio_pika.ExchangeType.FANOUT)
+        logs_exchange = await channel.declare_exchange(exchange_name, aio_pika.ExchangeType.TOPIC)
         while 1:
             _message = f"cur time {time.time()}"
             message = aio_pika.Message(body=_message.encode())
