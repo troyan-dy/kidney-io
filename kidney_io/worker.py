@@ -5,8 +5,8 @@ import aio_pika
 from aio_pika import exchange
 
 
-async def main(loop):
-    connection = await aio_pika.connect_robust("amqp://guest:guest@127.0.0.1/", loop=loop)
+async def main():
+    connection = await aio_pika.connect_robust("amqp://guest:guest@127.0.0.1/")
 
     async with connection:
         routing_key = "pub.method.sub"
@@ -22,6 +22,4 @@ async def main(loop):
 
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main(loop))
-    loop.close()
+    asyncio.run(main())

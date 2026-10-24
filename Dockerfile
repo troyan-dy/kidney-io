@@ -1,15 +1,15 @@
-FROM python:3.9 as requirements-builder
+FROM python:3.14 AS requirements-builder
 
 RUN mkdir build/
 WORKDIR /build/
 
-RUN pip install poetry
+RUN pip install poetry poetry-plugin-export
 
 COPY pyproject.toml poetry.lock /build/
 
 RUN poetry export --with-credentials --without-hashes -f requirements.txt -o requirements.txt
 
-FROM python:3.9
+FROM python:3.14
 
 RUN mkdir app/
 WORKDIR /app/
