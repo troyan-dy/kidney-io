@@ -1,0 +1,21 @@
+name: lint
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  wps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+      - name: Install Poetry
+        run: pipx install poetry
+      - name: Install dependencies
+        run: poetry install --no-interaction
+      - name: wemake-python-styleguide
+        run: poetry run flake8 kidney_io --select=WPS

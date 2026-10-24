@@ -27,3 +27,8 @@ fi
 
 poetry env use "$PYTHON_BIN"
 poetry install --no-interaction
+
+# wemake-python-styleguide: report violations without blocking the session
+if ! poetry run flake8 kidney_io --select=WPS; then
+  echo "WPS violations found: run 'make lint'" >&2
+fi
